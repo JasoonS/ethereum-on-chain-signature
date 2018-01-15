@@ -10,7 +10,7 @@ contract('Verifier', accounts => {
       const signature = web3.eth.sign(signerAccount, hash)
       const r = signature.slice(0, 66)
       const s = '0x' + signature.slice(66, 130)
-      const v = web3.toDecimal('0x' + signature.slice(130, 132))
+      const v = web3.toDecimal('0x' + signature.slice(130, 132)) + 27
       const solidityHash = await verifier.hasher(rawMessage)
       const ecAddress = await verifier.getAddress(hash, v, r, s)
 
